@@ -1,1 +1,1 @@
-# cmps285-fall2019-section02-group1
+# cmps285-fall-2019-section02-group1
