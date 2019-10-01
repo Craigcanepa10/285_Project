@@ -13,56 +13,51 @@ body {font-size:16px;}
 </style>
 <body>
 
+<!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-green w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
   <div class="w3-container">
     <h3 class="w3-padding-64"><b>SELU ACM</b></h3>
   </div>
   <div class="w3-bar-block">
-    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
     <a href="#About" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About Us</a> 
     <a href="#Members" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Members</a> 
     <a href="#Calendar" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Calendar</a> 
     <a href="#Contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact Us</a>
+    <a href="#Sign" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Sign Up</a>
+    <a href="#Login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Login</a>
   </div>
 </nav>
 
-
+<!-- Top menu on small screens -->
 <header class="w3-container w3-top w3-hide-large w3-green w3-xlarge w3-padding">
   <a href="javascript:void(0)" class="w3-button w3-green w3-margin-right" onclick="w3_open()">☰</a>
   <span>Association of Computing Machinery</span>
 </header>
 
+<!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
+<!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
 
-  <div class="w3-container" style="margin-top:80px" id="About">
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px" id="showcase">
     <h1 class="w3-jumbo w3-text-yellow"><b>SELU ACM</b></h1>
-    <style></style>
-    <h1 class="w3-xlarge w3-text-yellow"><b> "Advancing Computing as a Science & Profession".</b></h1>
+    <h1 class="w3-xxxlarge w3-text-yellow"><b>"Advancing Computing as a Science & Profession."</b></h1>
   </div>
  
-
-  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
-    <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
-    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-      <img id="img01" class="w3-image">
-      <p id="caption"></p>
-    </div>
-  </div>
-
+  <!-- About -->
   <div class="w3-container" id="About" style="margin-top:75px">
-    <h1 class="w3-xxxlarge w3-text-yellow"><b>About Us.</b></h1>
-    <p> A professional and social group of computer science and IT majors for the enrichment of the students. Get to know fellow programmers, exchange tips, laugh and learn codes. Spread your network within computer community.
-    </p>
+    <h1 class="w3-xxxlarge w3-text-yellow"><b>About Us</b></h1>
+    <p>A professional and social group of computer science and IT majors for the enrichment of the students. Get to know fellow programmers, exchange tips, laugh and learn codes. Spread your network within computer community.</p>
   </div>
   
+  <!-- Members -->
   <div class="w3-container" id="Members" style="margin-top:75px">
-    <h1 class="w3-xxxlarge w3-text-yellow"><b>Board Memebers</b></h1>
-  
+    <h1 class="w3-xxxlarge w3-text-yellow"><b>Members.</b></h1>
   </div>
-
+  <!-- The Team -->
   <div class="w3-row-padding w3-grayscale">
     <div class="w3-col m4 w3-margin-bottom">
       <div class="w3-light-grey">
@@ -70,7 +65,7 @@ body {font-size:16px;}
         <div class="w3-container">
           <h3>Kuo-Pao Yang</h3>
           <p class="w3-opacity">Club Advisor</p>
-          <p>blurb </p>
+          <p>blurb</p>
         </div>
       </div>
     </div>
@@ -90,29 +85,61 @@ body {font-size:16px;}
         <div class="w3-container">
           <h3>John Doe</h3>
           <p class="w3-opacity">???</p>
-          <p> blurb</p>
+          <p>blurb</p>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Calendar -->
   <div class="w3-container" id="Calendar" style="margin-top:75px">
     <h1 class="w3-xxxlarge w3-text-yellow"><b>Calendar</b></h1>
-
     <iframe src="https://calendar.google.com/calendar/b/2/embed?height=300&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FChicago&amp;src=c2VsdS5lZHVfNnJlb3U2dXNxZ204NTg2ZGhicmh0NHFqYnNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%23616161&amp;color=%230B8043&amp;showPrint=0&amp;showTabs=0" style="border-width:0" width="300" height="300" frameborder="0" scrolling="no"></iframe>
   </div>
-  </div>
-  
+
+  <!-- Contact -->
   <div class="w3-container" id="Contact" style="margin-top:75px">
     <h1 class="w3-xxxlarge w3-text-yellow"><b>Contact Us</b></h1>
-    <p>Questions? Contact us here!</p>
-    <p>add contact info</p>
+    <p>Questions, comments, concerns?<br>Contact us here!<br>add contact info</p>
   </div>
-
+  
+<!-- Sign up -->
+ <div class="w3-container" id="Sign" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-yellow"><b>Sign Up</b></h1>
+    <form action="/action_page.php" target="_blank">
+      <div class="w3-section">
+        <label>First Name</label>
+        <input class="w3-input w3-border" type="text" name="First Name" required>
+         <div class="w3-section">
+        <label>Last Name</label>
+        <input class="w3-input w3-border" type="text" name="Last Name" required>
+      </div>
+      <div class="w3-section">
+        <label>Major</label>
+        <input class="w3-input w3-border" type="text" name="Major" required>
+      </div>
+       <div class="w3-section">
+        <label>W Number</label>
+        <input class="w3-input w3-border" type="text" name="W#" required>
+      <div class="w3-section">
+        <label>Email</label>
+        <input class="w3-input w3-border" type="text" name="Email" required>
+      </div>
+      <button type="submit" class="w3-button w3-block w3-padding-large w3-yellow w3-margin-bottom">Submit</button>
+    </form> 
+ </div>
+ 
+ <!-- Log In -->
+ <div class="w3-container" id="Login" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-yellow"><b>Login</b></h1>
+    <button type="submit" class="w3-button w3-block w3-padding-large w3-yellow w3-margin-bottom">Log In</button>
+    </div>
+    
+<!-- End page content -->
 </div>
 
-
 <script>
+// Script to open and close sidebar
 function w3_open() {
   document.getElementById("mySidebar").style.display = "block";
   document.getElementById("myOverlay").style.display = "block";
@@ -123,12 +150,6 @@ function w3_close() {
   document.getElementById("myOverlay").style.display = "none";
 }
 
-function onClick(element) {
-  document.getElementById("img01").src = element.src;
-  document.getElementById("modal01").style.display = "block";
-  var captionText = document.getElementById("caption");
-  captionText.innerHTML = element.alt;
-}
 </script>
 
 </body>
