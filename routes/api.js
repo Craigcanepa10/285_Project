@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
 const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();
 
 router.get('/', function(req, res){
     res.send('Hello World! ACM Website coming soon.');
@@ -15,14 +16,15 @@ router.get('/member', function (req, res){
 });
 
 //add new member to db
-router.post('/member', function(req, res){
-    const first_name = req.first_name;
-    const last_name = req.last_name;
-    const email = req.email;
-    const major = req.major;
-    const w_num = req.w_num;
-    const signup_date = Date.now();
-    const password = req.password;
+router.post('/member', jsonParser, function(req, res){
+  console.log(req.body);
+    var first_name = req.body.first_name;
+    var last_name = req.body.last_name;
+    var email = req.body.email;
+    var major = req.body.major;
+    var w_num = req.body.w_num;
+    var signup_date = Date.now();
+    var password = req.body.password;
 
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";
