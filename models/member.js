@@ -1,21 +1,35 @@
-const Mongoose = require('mongoose');
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 //create member Schema and model
-const MemberSchema = new Mongoose.Schema({
-    first_name: String,
-    last_name: String,
-    email: String,
-    major: String,
-    w_num: String,
+const MemberSchema = new Schema({
+    first_name: {
+        type: String
+    },
+    last_name: {
+        type: String
+    },
+    email: {
+        type: String
+    },
+    major: {
+        type: String
+    },
+    w_num: {
+        type: String
+    },
     signup_date: {
         type: Date,
-        default: Date.now()},
+        default: Date.now()
+    },
     // renewal_date: {
     // expiration_date: {
     //     //find year from sign up
-    username: String,
-    password: String
+    // username: String,
+    password: {
+        type: String
+    }
 });
 
-var Member = Mongoose.model("Member", MemberSchema);
+const Member = mongoose.model('member', MemberSchema);
 module.exports = Member;
