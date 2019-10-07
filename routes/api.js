@@ -1,30 +1,31 @@
 const express = require('express');
-const Member = require('./member');
+const Member = require('../models/member');
 const router = express.Router();
+const BodyParser = require("body-parser");
 
-var member = new Member("bob", "bob@microsoft.bob");
-
-router.get('/members', function(req, res){
-    //const member_array = {
-     //   new member
-    //}
-    //todo: return all members from a member array
-    console.log(member.name);
+router.get('/roster', function(req, res){
     res.send({type : 'GET'});
 });
 
-//add new member
-router.post('/members', function(req, res){
-    res.send({type : 'POST'});
+router.get('/member', function(req, res){
+    res.send({type : 'GET'});
+});
+
+//add new member to db
+router.post('/member', function(req, res){
+    Member.create(req.body).then(function(Member){
+        res.send(Member);  
+    }
+    );
 });
 
 //update member info
-router.put('/members/:id', function(req, res){
+router.put('/member/:id', function(req, res){
     res.send({type : 'PUT'});
 });
 
 //delete member
-router.delete('/members/:id', function(req, res){
+router.delete('/member/:id', function(req, res){
     res.send({type : 'DELETE'});
 });
 
