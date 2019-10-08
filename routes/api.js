@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
 const bodyParser = require('body-parser');
+jsonParser = bodyParser.json();
 
 router.get('/', function(req, res){
     res.send('Hello World! ACM Website coming soon.');
