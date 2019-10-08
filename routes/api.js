@@ -16,7 +16,7 @@ router.get('/member', function (req, res){
 });
 
 //add new member to db
-router.post('/member', jsonParser, function(req, res){
+router.post('/signup', jsonParser, function(req, res){
   console.log(req.body);
     var first_name = req.body.first_name;
     var last_name = req.body.last_name;
