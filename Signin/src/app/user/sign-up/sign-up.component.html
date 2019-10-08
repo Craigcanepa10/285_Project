@@ -1,6 +1,9 @@
 <form #signUpForm="ngForm" (ngSubmit)="signUpFOrm.valid && onSubmit(signUpForm)">
-    <input type="text" #fullName="ngModel" [(ngModel)]="userService.selectedUser.fullName" name= "fullName" placeholder="Full Name"
-    required [ngClass]= "{'invalid-textbox' :signUpForm.submitted && !fullName.valid}">
+    <input type="text" #firstName="ngModel" [(ngModel)]="userService.selectedUser.firstName" name= "firstName" placeholder="First Name"
+    required [ngClass]= "{'invalid-textbox' :signUpForm.submitted && !firstName.valid}">
+
+    <input type="text" #lastName="ngModel" [(ngModel)]="userService.selectedUser.lastName" name= "lastName" placeholder="Last Name"
+    required [ngClass]= "{'invalid-textbox' :signUpForm.submitted && !lastName.valid}">
 
     <input type="text" #email="ngModel" [(ngModel)]="userService.selectedUser.email" name="email" placeholder="Email"
     required [pattern]="emailRegex" [ngClass]= "{'invalid-textbox' :signUpForm.submitted && !email.valid}">
