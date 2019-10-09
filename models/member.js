@@ -19,12 +19,13 @@ const MemberSchema = new Schema({
         type: String
     },
     signup_date: {
-        type: Date,
-        default: Date.now()
+        type: Date
     },
     // renewal_date: {
-    // expiration_date: {
-    //     //find year from sign up
+    expiration_date: {
+        //find year from sign up
+        type: Date
+    },
     // username: String,
     password: {
         type: String
