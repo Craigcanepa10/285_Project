@@ -42,7 +42,8 @@ router.post('/signup', jsonParser, function(req, res){
     var email = req.body.email;
     var major = req.body.major;
     var w_num = req.body.w_num;
-    var signup_date = Date.now();
+    var signup_date = new Date();
+    var expiration_date = new Date(signup_date.getTime() + (1000 * 60 * 60 * 24 * 365));
     var password = req.body.password;
 
 const MongoClient = require('mongodb').MongoClient;
@@ -53,7 +54,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true,
 client.connect(err => {
   const collection = client.db("ACM").collection("Member");
   // perform actions on the collection object
-    collection.insertOne({first_name: first_name, last_name: last_name, email: email, major: major, w_num: w_num, signup_date: signup_date, password: password})
+    collection.insertOne({first_name: first_name, last_name: last_name, email: email, major: major, w_num: w_num, signup_date: signup_date, expiration_date: expiration_date, password: password})
     .then(out => res.status(201).json({message: "Success"}))
   client.close();
 });
