@@ -5,11 +5,8 @@ const mongoose = require('mongoose');
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
 const bodyParser = require('body-parser');
-<<<<<<< HEAD
-json = bodyParser.json();
-=======
 jsonParser = bodyParser.json();
->>>>>>> origin/working_Jamie
+
 
 router.get('/', function(req, res){
     res.send('Hello World! ACM Website coming soon.');
@@ -33,7 +30,7 @@ router.get('/members',function(req, res, next){
     });
 });
 //Get one
-router.get('/member', json, function(req, res, next){
+router.get('/member', jsonParser, function(req, res, next){
     const MongoClient = require('mongodb').MongoClient;
     const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";
     const client = new MongoClient(uri, { useNewUrlParser: true,
@@ -52,16 +49,6 @@ router.get('/member', json, function(req, res, next){
 });
 
 //add new member to db
-<<<<<<< HEAD
-router.post('/member', json, function(req, res){
-    const first_name = req.first_name;
-    const last_name = req.last_name;
-    const email = req.email;
-    const major = req.major;
-    const w_num = req.w_num;
-    const signup_date = new Date();
-    const password = req.password;
-=======
 router.post('/signup', jsonParser, function(req, res){
   console.log(req.body);
     var first_name = req.body.first_name;
@@ -72,7 +59,7 @@ router.post('/signup', jsonParser, function(req, res){
     var signup_date = new Date();
     var expiration_date = new Date(signup_date.getTime() + (1000 * 60 * 60 * 24 * 365));
     var password = req.body.password;
->>>>>>> origin/working_Jamie
+
 
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";
@@ -89,13 +76,44 @@ client.connect(err => {
 });
 
 //update member info
-router.put('/member/:id', function(req, res){
-    res.send({type : 'PUT'});
-});
+// router.put('/extend', function(req, res){
+//     const MongoClient = require('mongodb').MongoClient;
+//     const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";
+//     const client = new MongoClient(uri, { useNewUrlParser: true,
+//         useUnifiedTopology: true
+//     });    
+//     client.connect(err => {
+//     const collection = client.db("ACM").collection("Member");
+//         var ObjectID = require("mongodb").ObjectID
+//         collection.findOneAndUpdate({w_num: req.body.w_num}).then(function(error, result) {
+//             if(error) {
+//                 return res.status(500).send(error);
+//             }
+//             expiration_date.getTime() + (1000 * 60 * 60 * 24 * 365)
+//             .then(res.send(expiration_date));    
+//         });
+//     });
+// });
+
+
 
 //delete member
-router.delete('/member/:id', function(req, res){
-    res.send({type : 'DELETE'});
+router.delete('/delete', jsonParser ,function(req, res){
+    const MongoClient = require('mongodb').MongoClient;
+    const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";
+    const client = new MongoClient(uri, { useNewUrlParser: true,
+        useUnifiedTopology: true
+    });    
+    client.connect(err => {
+    const collection = client.db("ACM").collection("Member");
+        var ObjectID = require("mongodb").ObjectID
+        collection.findOneAndDelete({w_num: req.body.w_num}).then(function(error, result) {
+            if(error) {
+                return res.status(500).send(error);
+            }
+            console.log("This member was removed.");
+        });
+    });
 });
 
 module.exports = router;
