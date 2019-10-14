@@ -1,11 +1,24 @@
 const express = require('express');
-const Member = require('../models/member');
+const User = require('../models/user');
 const router = express.Router();
-const mongoose = require('mongoose');
-const mongodb = require('mongodb');
-const MongoClient = mongodb.MongoClient;
+// const mongoose = require('mongoose');
+// const mongodb = require('mongodb');
+// const MongoClient = mongodb.MongoClient;
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
+// const MongoClient = require('mongodb').MongoClient;
+// let client = null;
+
+// function Connect()
+// {
+//     if(client == null)
+//     {
+//         const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";
+//         client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true }); 
+//     }
+// }
+
+// Connect();
 
 router.get('/', function(req, res){
     res.send('Hello World! ACM Website coming soon.');
@@ -16,7 +29,7 @@ router.get('/member',function(req, res, next){
     const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";
     const client = new MongoClient(uri, { useNewUrlParser: true,
         useUnifiedTopology: true
-    });    
+    });   
     client.connect(err => {
         const collection = client.db("ACM").collection("Member");
         // perform actions on the collection object
@@ -25,6 +38,7 @@ router.get('/member',function(req, res, next){
                 return res.status(500).send(error);
             }
             res.send(result);
+            client.close();
         });
     });
 });
@@ -37,15 +51,15 @@ router.get('/member',function(req, res, next){
 //add new member to db
 router.post('/signup', jsonParser, function(req, res){
   console.log(req.body);
-  let newMember = new Member();
-  newMember.first_name = req.body.first_name;
-  newMember.last_name = req.body.last_name;
-  newMember.email = req.body.email;
-  newMember.major = req.body.major;
-  newMember.w_num = req.body.w_num;
-  newMember.signup_date = new Date();
-  newMember.expiration_date = new Date(newMember.signup_date.getTime() + (1000 * 60 * 60 * 24 * 365));
-  newMember.setPassword(req.body.password);
+  let newUser = new User();
+  newUser.first_name = req.body.first_name;
+  newUser.last_name = req.body.last_name;
+  newUser.email = req.body.email;
+  newUser.major = req.body.major;
+  newUser.w_num = req.body.w_num;
+  newUser.signup_date = new Date();
+  newUser.expiration_date = new Date(newUser.signup_date.getTime() + (1000 * 60 * 60 * 24 * 365));
+  newUser.setPassword(req.body.password);
 
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";
@@ -55,7 +69,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true,
 client.connect(err => {
   const collection = client.db("ACM").collection("Member");
   // perform actions on the collection object
-    collection.insertOne(newMember)
+    collection.insertOne(newUser)
     .then(out => res.status(201).json({message: "Success"}))
   client.close();
 });
