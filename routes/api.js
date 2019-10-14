@@ -5,18 +5,37 @@ const mongoose = require('mongoose');
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
 const bodyParser = require('body-parser');
-const jsonParser = bodyParser.json();
+jsonParser = bodyParser.json();
 
 router.get('/', function(req, res){
     res.send('Hello World! ACM Website coming soon.');
 });
-
-router.get('/member', function (req, res){
-    res.send({type : 'GET'});
+//GETALL
+router.get('/member',function(req, res, next){
+    const MongoClient = require('mongodb').MongoClient;
+    const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";
+    const client = new MongoClient(uri, { useNewUrlParser: true,
+        useUnifiedTopology: true
+    });    
+    client.connect(err => {
+        const collection = client.db("ACM").collection("Member");
+        // perform actions on the collection object
+        collection.find({}).toArray(function(error, result)  {
+            if(error) {
+                return res.status(500).send(error);
+            }
+            res.send(result);
+        });
+    });
 });
 
+// //GET
+// router.get('/member', function (req, res){
+//     res.send({type : 'GET'});
+// });
+
 //add new member to db
-router.post('/member', jsonParser, function(req, res){
+router.post('/signup', jsonParser, function(req, res){
   console.log(req.body);
     var first_name = req.body.first_name;
     var last_name = req.body.last_name;
