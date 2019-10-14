@@ -20,11 +20,12 @@ const jsonParser = bodyParser.json();
 
 // Connect();
 
+
 router.get('/', function(req, res){
     res.send('Hello World! ACM Website coming soon.');
 });
 //GETALL
-router.get('/member',function(req, res, next){
+router.get('/members',function(req, res, next){
     const MongoClient = require('mongodb').MongoClient;
     const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";
     const client = new MongoClient(uri, { useNewUrlParser: true,
@@ -42,11 +43,24 @@ router.get('/member',function(req, res, next){
         });
     });
 });
-
-// //GET
-// router.get('/member', function (req, res){
-//     res.send({type : 'GET'});
-// });
+//Get one
+router.get('/member', jsonParser, function(req, res, next){
+    const MongoClient = require('mongodb').MongoClient;
+    const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";
+    const client = new MongoClient(uri, { useNewUrlParser: true,
+        useUnifiedTopology: true
+    });    
+    client.connect(err => {
+        const collection = client.db("ACM").collection("Member");
+        var ObjectID = require("mongodb").ObjectID
+        collection.find({w_num: req.body.w_num}).toArray(function(error, result) {
+            if(error) {
+                return res.status(500).send(error);
+            }
+            res.send(result);
+        });
+    });
+});
 
 //add new member to db
 router.post('/signup', jsonParser, function(req, res){
@@ -61,28 +75,63 @@ router.post('/signup', jsonParser, function(req, res){
   newUser.expiration_date = new Date(newUser.signup_date.getTime() + (1000 * 60 * 60 * 24 * 365));
   newUser.setPassword(req.body.password);
 
+
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true,
     useUnifiedTopology: true,
-});
+    });
+
 client.connect(err => {
   const collection = client.db("ACM").collection("Member");
   // perform actions on the collection object
     collection.insertOne(newUser)
     .then(out => res.status(201).json({message: "Success"}))
   client.close();
-});
+    });
+    
 });
 
 //update member info
-router.put('/member/:id', function(req, res){
-    res.send({type : 'PUT'});
+router.put('/extend', function(req, res){
+    const MongoClient = require('mongodb').MongoClient;
+    const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";
+    const client = new MongoClient(uri, { useNewUrlParser: true,
+        useUnifiedTopology: true
+    });    
+    client.connect(err => {
+    const collection = client.db("ACM").collection("Member");
+        var ObjectID = require("mongodb").ObjectID
+        var signup_date = new Date();
+        var expiration_date = new Date(signup_date.getTime() + (1000 * 60 * 60 * 24 * 365));
+        collection.findOneAndUpdate({w_num: req.body.w_num}).then(function(error, result) {
+            if(error) {
+                return res.status(500).send(error);
+            }
+            console.log(req.body.w_num);
+        });
+    });
 });
 
+
+
 //delete member
-router.delete('/member/:id', function(req, res){
-    res.send({type : 'DELETE'});
+router.delete('/delete', jsonParser ,function(req, res){
+    const MongoClient = require('mongodb').MongoClient;
+    const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";
+    const client = new MongoClient(uri, { useNewUrlParser: true,
+        useUnifiedTopology: true
+    });    
+    client.connect(err => {
+    const collection = client.db("ACM").collection("Member");
+        var ObjectID = require("mongodb").ObjectID
+        collection.findOneAndDelete({w_num: req.body.w_num}).then(function(error, result) {
+            if(error) {
+                return res.status(500).send(error);
+            }
+            console.log("This member was removed.");
+        });
+    });
 });
 
 module.exports = router;
