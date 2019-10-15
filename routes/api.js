@@ -93,7 +93,7 @@ client.connect(err => {
 });
 
 //update member info
-router.put('/extend', function(req, res){
+router.put('/extend', jsonParser, function(req, res){
     const MongoClient = require('mongodb').MongoClient;
     const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";
     const client = new MongoClient(uri, { useNewUrlParser: true,
