@@ -102,13 +102,12 @@ router.put('/extend', jsonParser , function(req, res){
     client.connect(err => {
     const collection = client.db("ACM").collection("Member");
         var ObjectID = require("mongodb").ObjectID
-        var signup_date = new Date();
-        var expiration_date = new Date(signup_date.getTime() + (1000 * 60 * 60 * 24 * 365));
-        collection.findOneAndUpdate({w_num: req.body.w_num}, expiration_date).then(function(error, result) {
+        var up_date = new Date();
+        var expiration_date = new Date(up_date.getTime() + 1000 * 60 * 60 * 24 * 365);
+        collection.findOneAndUpdate({w_num: req.body.w_num}, {$set: {expiration_date : expiration_date}}).then(function(error, result) {
             if(error) {
                 return res.status(500).send(error);
             }
-            var expiration_date = new Date(newUser.expiration_date.getTime() + (1000 * 60 * 60 * 24 * 365));
             console.log(expiration_date);
         });
     });
@@ -130,7 +129,7 @@ router.delete('/delete', jsonParser ,function(req, res){
             if(error) {
                 return res.status(500).send(error);
             }
-            console.log("This member was removed.");
+            res.send("This member was removed.");
         });
     });
 });
