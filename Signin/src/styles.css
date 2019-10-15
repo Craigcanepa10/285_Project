@@ -6,9 +6,10 @@
 /* BASIC */
 
 html {
-    background-color: #56baed;
-  }
   
+    background-color: #50af60;
+  }
+
   body {
     font-family: "Poppins", sans-serif;
     height: 100vh;
@@ -87,7 +88,7 @@ html {
   
   input[type=button], input[type=submit], input[type=reset]  {
     cursor: pointer;
-    background-color: #56baed;
+    background-color: #deed56;
     border: none;
     color: white;
     padding: 15px 80px;
