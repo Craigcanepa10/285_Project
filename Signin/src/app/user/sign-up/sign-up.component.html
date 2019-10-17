@@ -12,9 +12,9 @@
     required [ngClass]= "{'invalid-textbox' :signUpForm.submitted && !major.valid}"/>
 
     <input type="text" #w_num="ngModel" [(ngModel)]="userService.selectedUser.w_num" name="w_num" placeholder="W Number"
-    required [ngClass]= "{'invalid-textbox' :signUpForm.submitted && !w_num.valid}"/>
+    minlength= "8" maxlength= "8" required [ngClass]= "{'invalid-textbox' :signUpForm.submitted && !w_num.valid}"/>
 
-    <input type="password" #password="ngModel" [(ngModel)]="userService.selectedUser.password" name="password" placeholder="Password"
+    <input type="text" #password="ngModel" [(ngModel)]="userService.selectedUser.password" name="password" placeholder="Password"
     minlength= "6" required [ngClass]= "{'invalid-textbox' :signUpForm.submitted && !password.valid}"/>
 
     <input type="submit" value="sign Up"/>
@@ -24,7 +24,7 @@
     Saved successfully
 </div>
 
-<div class= "alert" *ngIf= "serverErrorMessages">
-    {{serverErrorMessages}}
+<div class= "alert" *ngIf= "serverErrorMessage">
+    {{serverErrorMessage}}
 </div>
 <!-- path="http://localhost:3000/signUp"  method='POST' -->

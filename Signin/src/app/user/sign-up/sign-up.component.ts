@@ -19,19 +19,22 @@ export class SignUpComponent implements OnInit {
   showSucessMessage: boolean;
   serverErrorMessage: string;
   http: any;
+  selectedUser: User;
 
-  constructor(private userService: UserService) { }
+  constructor(public userService: UserService) { }
 
   ngOnInit() {
+    this.selectedUser = this.userService.selectedUser;
   }
 
   onSubmit(form: NgForm){
-    console.log(this.userService.selectedUser);
+    console.log(this.selectedUser);
+    console.log(this.selectedUser.password);
     //console.log(JSON.stringify(this.userService.selectedUser));
-        var data = JSON.stringify(this.userService.selectedUser);
-        var data2 = (this.userService.selectedUser);
+        var data = JSON.stringify(this.selectedUser);
+        var data2 = (this.selectedUser);
         var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", "http://localhost:3000/signUp", true);
+        xhttp.open("POST", "http://localhost:3000/signup", true);
         xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
         xhttp.send(data);
         
@@ -55,7 +58,7 @@ export class SignUpComponent implements OnInit {
   }
 
   resetForm(form: NgForm) {
-    this.userService.selectedUser = {
+    this.selectedUser = {
       first_name: '',
       last_name: '',
       email: '',
