@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpClientModule} from '@angular/common/http';
 
 import {environment} from '../../../environments/environment';
 import {User} from '../../shared/user.model';
@@ -21,40 +21,28 @@ export class SignUpComponent implements OnInit {
   http: any;
   selectedUser: User;
 
-  constructor(public userService: UserService) { }
+  constructor(public userService: UserService, private httpClient: HttpClient) { }
+  
+  httpOptions = {headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  }
 
   ngOnInit() {
     this.selectedUser = this.userService.selectedUser;
   }
 
   onSubmit(form: NgForm){
-    console.log(this.selectedUser);
-    console.log(this.selectedUser.password);
-    //console.log(JSON.stringify(this.userService.selectedUser));
         var data = JSON.stringify(this.selectedUser);
-        var data2 = (this.selectedUser);
-        var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", "http://localhost:3000/signup", true);
-        xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-        xhttp.send(data);
+        //console.log(data);
+        this.httpClient.post("http://slu-acm.herokuapp.com/signup", data, this.httpOptions).subscribe(d => {
+          console.log("Success", data);
+        }, error => {
+          console.log("Error", error);
+        });
         
-
         setTimeout(() => this.showSucessMessage = false,4000);
         this.resetForm(form);
-      //};
-      // res => {
-      //   this.showSucessMessage = true;
-      //   setTimeout(() => this.showSucessMessage = false,4000);
-      //   this.resetForm(form);
-      // },
-      // err => {
-      //   if (err.ststus == 422) {
-      //     this.serverErrorMessage = err.error.join('<br/>');
-      //   }
-      //   else
-      //     this.serverErrorMessage = 'Something broke contact admin.';
-      // }
-    //);
   }
 
   resetForm(form: NgForm) {

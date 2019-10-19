@@ -14,7 +14,7 @@
     <input type="text" #w_num="ngModel" [(ngModel)]="userService.selectedUser.w_num" name="w_num" placeholder="W Number"
     minlength= "8" maxlength= "8" required [ngClass]= "{'invalid-textbox' :signUpForm.submitted && !w_num.valid}"/>
 
-    <input type="text" #password="ngModel" [(ngModel)]="userService.selectedUser.password" name="password" placeholder="Password"
+    <input type="password" #password="ngModel" [(ngModel)]="userService.selectedUser.password" name="password" placeholder="Password"
     minlength= "6" required [ngClass]= "{'invalid-textbox' :signUpForm.submitted && !password.valid}"/>
 
     <input type="submit" value="sign Up"/>

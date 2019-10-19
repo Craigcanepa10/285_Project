@@ -1,29 +1,14 @@
 const express = require('express');
 const User = require('../models/user');
 const router = express.Router();
-// const mongoose = require('mongoose');
-// const mongodb = require('mongodb');
-// const MongoClient = mongodb.MongoClient;
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
-// const MongoClient = require('mongodb').MongoClient;
-// let client = null;
-
-// function Connect()
-// {
-//     if(client == null)
-//     {
-//         const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";
-//         client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true }); 
-//     }
-// }
-
-// Connect();
 
 
 router.get('/', function(req, res){
     res.send('Hello World! ACM Website coming soon.');
 });
+
 //GETALL
 router.get('/members',function(req, res, next){
     const MongoClient = require('mongodb').MongoClient;
@@ -43,6 +28,7 @@ router.get('/members',function(req, res, next){
         });
     });
 });
+
 //Get one
 router.get('/member', jsonParser, function(req, res, next){
     const MongoClient = require('mongodb').MongoClient;
@@ -112,8 +98,6 @@ router.put('/extend', jsonParser , function(req, res){
         });
     });
 });
-
-
 
 //delete member
 router.delete('/delete', jsonParser ,function(req, res){
