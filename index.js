@@ -1,27 +1,23 @@
-const Express = require("express");
-const BodyParser = require("body-parser");
-const Mongoose = require("mongoose");
+const express = require("express");
+const bodyParser = require("body-parser");
+const listEndpoints = require('express-list-endpoints');
+//const Mongoose = require("mongoose");
 
-var app = Express();
+var app = express();
 
-app.use("/api", require("./routes/api"));
+app.use(require("./routes/api"));
 
-app.use(BodyParser.json());
-app.use(BodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
+// mongoose.connect("mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority", 
+// { useNewUrlParser: true, useUnifiedTopology: true });
+//mongoose.connect("mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority", 
+//{ useNewUrlParser: true, useUnifiedTopology: true });
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('Now listening for requests');
 });
 
-// connect to DB, move into api requests!!!
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
-client.connect(err => {
-  const collection = client.db("ACM").collection("Member");
-  // perform actions on the collection object
-  client.close();
-});
+console.log(listEndpoints(app));
+
