@@ -4,11 +4,6 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
-
-router.get('/', function(req, res){
-    res.send('Hello World! ACM Website coming soon.');
-});
-
 //GETALL
 router.get('/members',function(req, res, next){
     const MongoClient = require('mongodb').MongoClient;

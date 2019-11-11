@@ -34,14 +34,14 @@ export class SignUpComponent implements OnInit {
 
   onSubmit(form: NgForm){
         var data = JSON.stringify(this.selectedUser);
-        //console.log(data);
+        console.log(data);
         this.httpClient.post("http://slu-acm.herokuapp.com/signup", data, this.httpOptions).subscribe(d => {
           console.log("Success", data);
         }, error => {
           console.log("Error", error);
         });
         
-        setTimeout(() => this.showSucessMessage = false,4000);
+        setTimeout(() => this.showSucessMessage = false, 4000);
         this.resetForm(form);
   }
 
