@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<title>ACM</title>
+<title>ACM Home</title>
 <head><link rel="ACM Icon" href="ACM Photos/acm logo.png"></head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,8 +31,8 @@ body {font-size:16px;}
 
 <!-- Top menu on small screens -->
 <header class="w3-container w3-top w3-hide-large w3-green w3-xlarge w3-padding">
-  <a href="javascript:void(0)" class="w3-button w3-green w3-margin-right" onclick="w3_open()">☰</a>
-  <span>ACM</span>
+  <a href="javascript:void(0)" class="w3-button w3-green w3-margin-left" onclick="w3_open()">☰</a>
+  <span>Association of Computing Machinery</span>
 </header>
 
 <!-- Overlay effect when opening sidebar on small screens -->
@@ -43,7 +43,7 @@ body {font-size:16px;}
 
   <!-- Header -->
   <div class="w3-container" style="margin-top:80px" id="showcase">
-    <h1 class="w3-xxxlarge w3-text-yellow"><b>Association of Computing Machinery</b></h1>
+   
     <h1 class="w3-xlarge w3-text-yellow"><b>"Advancing Computing as a Science & Profession."</b></h1>
   </div>
  
@@ -173,6 +173,15 @@ body {font-size:16px;}
 </div>
 
 <script>
+
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+
 // Script to open and close sidebar
 function w3_open() {
   document.getElementById("mySidebar").style.display = "block";
@@ -307,16 +316,5 @@ background: #999;
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
   </form>
 </div>
-
-<script>
-function openForm() {
-  document.getElementById("myForm").style.display = "block";
-}
-
-function closeForm() {
-  document.getElementById("myForm").style.display = "none";
-}
-
-</script>
 </body>
 </html>
