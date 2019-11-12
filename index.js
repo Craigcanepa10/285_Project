@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const listEndpoints = require('express-list-endpoints');
+//Maybe this is where i tell it to use a CSS file.
 //const Mongoose = require("mongoose");
 
 var app = express();
