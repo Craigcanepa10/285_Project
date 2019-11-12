@@ -125,11 +125,9 @@ background: #999;
      <h3 class="w3-padding-64"><b>Southeastern's ACM</b></h3>
    </div>
    <div class="w3-bar-block">
-     <a href="#About" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About Us</a> 
-     <a href="#Members" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Members</a> 
-     <a href="#Calendar" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Calendar</a> 
-     <a href="#Sign" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Sign Up</a>
-     <a href="#Login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Log In</a>
+    <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="About Us" onclick='window.location.href="Home.html"'/>
+    <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="Members" onclick='window.location.href="Members.html"'/>
+    <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="Calendar" onclick='window.location.href="Calendar.html"'/> 
    </div>
  </nav>
  
@@ -194,4 +192,27 @@ background: #999;
       </form>
   <!-- End page content -->
   </div>
+  
+<script>
+
+  function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+  
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }
+  
+  // Script to open and close sidebar
+  function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+   
+  function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+  }
+  
+  </script>
 <body>
