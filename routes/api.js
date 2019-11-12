@@ -6,6 +6,8 @@ const router = express.Router();
 // const MongoClient = mongodb.MongoClient;
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
+//<link rel="stylesheet" type="text/css" href="pagesty.css"></link>
+
 // const MongoClient = require('mongodb').MongoClient;
 // let client = null;
 
@@ -26,6 +28,7 @@ router.get('/', function(req, res){
 });
 //GETALL
 router.get('/members',function(req, res, next){
+    //gives all user data including the salt and hash data. maybe we no give that data for security
     const MongoClient = require('mongodb').MongoClient;
     const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";
     const client = new MongoClient(uri, { useNewUrlParser: true,
@@ -43,7 +46,8 @@ router.get('/members',function(req, res, next){
         });
     });
 });
-//Get one
+//Get one orrrr have this be the list of all the members viewable by only name or name and w_num
+//What I beleve I will need to fuck with. pos have HTML script to display our members in an HTML Display.
 router.get('/member', jsonParser, function(req, res, next){
     const MongoClient = require('mongodb').MongoClient;
     const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";

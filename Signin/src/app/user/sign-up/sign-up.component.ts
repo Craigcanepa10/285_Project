@@ -27,11 +27,10 @@ export class SignUpComponent implements OnInit {
 
   onSubmit(form: NgForm){
     console.log(this.userService.selectedUser);
-    //console.log(JSON.stringify(this.userService.selectedUser));
+    console.log(JSON.stringify(this.userService.selectedUser));
         var data = JSON.stringify(this.userService.selectedUser);
-        var data2 = (this.userService.selectedUser);
         var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", "http://localhost:3000/signUp", true);
+        xhttp.open("post", "http://localhost:3000/signUp", true);
         xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
         xhttp.send(data);
         
