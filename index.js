@@ -1,24 +1,93 @@
-const express = require("express");
-const bodyParser = require("body-parser");
+/*
+  Copyright 2019 Square Inc.
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+      http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+*/
+const express = require('express');
+const bodyParser = require('body-parser');
+const crypto = require('crypto');
+const squareConnect = require('square-connect');
 const listEndpoints = require('express-list-endpoints');
+<<<<<<< HEAD
 //Maybe this is where i tell it to use a CSS file.
 //const Mongoose = require("mongoose");
 
 var app = express();
+=======
+const cors = require('cors');
+var path = require("path");
+>>>>>>> refs/remotes/origin/Connecting_POST
 
+const app = express();
+app.use(cors());
 app.use(require("./routes/api"));
+
+const port = 3000;
+
+app.get('/payment', function(req, res){
+    res.sendFile(path.join(__dirname + '/SquarePayment.html'));
+});
+
+// Set the Access Token
+const accessToken = 'EAAAEKDwSDis1VvnsL1r-dH7osBbcfRjA0WSE1p2fp8GWjgtQxll4gtnh6mDEQRw';
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(__dirname));
 
-// mongoose.connect("mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority", 
-// { useNewUrlParser: true, useUnifiedTopology: true });
-//mongoose.connect("mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority", 
-//{ useNewUrlParser: true, useUnifiedTopology: true });
+// Set Square Connect credentials and environment
+const defaultClient = squareConnect.ApiClient.instance;
 
-app.listen(process.env.PORT || 3000, () => {
-    console.log('Now listening for requests');
+// Configure OAuth2 access token for authorization: oauth2
+const oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = accessToken;
+
+// Set 'basePath' to switch between sandbox env and production env
+// sandbox: https://connect.squareupsandbox.com
+// production: https://connect.squareup.com
+defaultClient.basePath = 'https://connect.squareupsandbox.com';
+
+app.post('/process-payment', async (req, res) => {
+  const request_params = req.body;
+
+  // length of idempotency_key should be less than 45
+  const idempotency_key = crypto.randomBytes(22).toString('hex');
+
+  // Charge the customer's card
+  const payments_api = new squareConnect.PaymentsApi();
+  const request_body = {
+    source_id: request_params.nonce,
+    amount_money: {
+      amount: 1500, // $15.00 charge
+      currency: 'USD'
+    },
+    idempotency_key: idempotency_key
+  };
+
+  try {
+    const response = await payments_api.createPayment(request_body);
+    res.status(200).json({
+      'title': 'Payment Successful',
+      'result': response
+    });
+  } catch(error) {
+    res.status(500).json({
+      'title': 'Payment Failure',
+      'result': error.response.text
+    });
+  }
 });
 
-console.log(listEndpoints(app));
+app.listen(
+  port,
+  () => console.log(`listening on - http://localhost:${port}`)
+);
 
+console.log(listEndpoints(app));
