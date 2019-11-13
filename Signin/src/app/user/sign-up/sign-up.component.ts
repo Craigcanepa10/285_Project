@@ -20,38 +20,24 @@ export class SignUpComponent implements OnInit {
   serverErrorMessage: string;
   http: any;
 
-<<<<<<< HEAD
-  constructor(private userService: UserService) { }
-=======
   constructor(public userService: UserService, private httpClient: HttpClient) { }
   
   httpOptions = {headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
   }
->>>>>>> refs/remotes/origin/Connecting_POST
 
   ngOnInit() {
   }
 
   onSubmit(form: NgForm){
-<<<<<<< HEAD
-    console.log(this.userService.selectedUser);
-    console.log(JSON.stringify(this.userService.selectedUser));
         var data = JSON.stringify(this.userService.selectedUser);
-        var xhttp = new XMLHttpRequest();
-        xhttp.open("post", "http://localhost:3000/signUp", true);
-        xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-        xhttp.send(data);
-=======
-        var data = JSON.stringify(this.selectedUser);
         console.log(data);
         this.httpClient.post("http://slu-acm.herokuapp.com/signup", data, this.httpOptions).subscribe(d => {
           console.log("Success", data);
         }, error => {
           console.log("Error", error);
         });
->>>>>>> refs/remotes/origin/Connecting_POST
         
         setTimeout(() => this.showSucessMessage = false, 4000);
         this.resetForm(form);

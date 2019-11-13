@@ -15,15 +15,8 @@ const bodyParser = require('body-parser');
 const crypto = require('crypto');
 const squareConnect = require('square-connect');
 const listEndpoints = require('express-list-endpoints');
-<<<<<<< HEAD
-//Maybe this is where i tell it to use a CSS file.
-//const Mongoose = require("mongoose");
-
-var app = express();
-=======
 const cors = require('cors');
 var path = require("path");
->>>>>>> refs/remotes/origin/Connecting_POST
 
 const app = express();
 app.use(cors());
