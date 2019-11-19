@@ -19,7 +19,6 @@ export class SignUpComponent implements OnInit {
   showSucessMessage: boolean;
   serverErrorMessage: string;
   http: any;
-  selectedUser: User;
 
   constructor(public userService: UserService, private httpClient: HttpClient) { }
   
@@ -29,7 +28,6 @@ export class SignUpComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.selectedUser = this.userService.selectedUser;
   }
 
   onSubmit(form: NgForm){
@@ -46,7 +44,7 @@ export class SignUpComponent implements OnInit {
   }
 
   resetForm(form: NgForm) {
-    this.selectedUser = {
+    this.userService.selectedUser = {
       first_name: '',
       last_name: '',
       email: '',

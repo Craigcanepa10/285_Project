@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 var crypto = require('crypto');
+//import {UserService} from '../../shared/user.service'
+//var password = userService.selectedUser.password
 
 //create user Schema and model
 const UserSchema = new Schema({
@@ -24,6 +26,7 @@ const UserSchema = new Schema({
         type : String, 
         required : true
     },
+
     signup_date: Date,
     expiration_date: Date,
     role: {

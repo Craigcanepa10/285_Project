@@ -6,6 +6,7 @@ const jsonParser = bodyParser.json();
 
 //GETALL
 router.get('/members',function(req, res, next){
+    //gives all user data including the salt and hash data. maybe we no give that data for security
     const MongoClient = require('mongodb').MongoClient;
     const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";
     const client = new MongoClient(uri, { useNewUrlParser: true,
