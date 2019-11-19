@@ -15,8 +15,10 @@ const bodyParser = require('body-parser');
 const crypto = require('crypto');
 const squareConnect = require('square-connect');
 const listEndpoints = require('express-list-endpoints');
-const cors = require('cors');
-var path = require("path");
+const jwt = require('jsonwebtoken')
+//const Mongoose = require("mongoose");
+
+var app = express();
 
 const app = express();
 app.use(cors());
