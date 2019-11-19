@@ -7,12 +7,10 @@ app.appendChild(container)
 
 var request = new XMLHttpRequest()
 
-request.open('GET', 'http://slu-acm.herokuapp.com/members', true)
+request.open('GET', 'http://slu-acm.herokuapp.com/member', true)
 request.onload = function() {
   // Begin accessing JSON data here
   var memdat = JSON.parse(this.response)
-  if (request.status >= 200 && request.status < 400) {
-    memdat.forEach(Member => {
       const card = document.createElement('div')
       card.setAttribute('class', 'card')
 
@@ -43,8 +41,6 @@ request.onload = function() {
       card.appendChild(info_s)
       card.appendChild(info_ed)
 
-    })
-  }
 }
 
 request.send()
