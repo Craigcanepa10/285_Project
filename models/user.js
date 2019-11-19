@@ -29,6 +29,14 @@ const UserSchema = new Schema({
 
     signup_date: Date,
     expiration_date: Date,
+    role: {
+        type: String,
+        default: "Member"
+    },
+    paid: {
+        type: Boolean,
+        default: false
+    },
     hash: String,
     salt: String
 });

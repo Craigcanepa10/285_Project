@@ -19,13 +19,5 @@ export class UserService {
 
 
   constructor(public http: HttpClient) { }
-
-  // postUser(user: User){
-  //   return this.http.post(environment.apiBaseUrl,user);//+'/register',user);
-  // }
-
-  // postUser(user: User){
-  //   return this.http.post(environment.apiBaseUrl,user);//+'/register',user);
-  // }
   
 }

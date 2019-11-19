@@ -1,31 +1,12 @@
 const express = require('express');
 const User = require('../models/user');
 const router = express.Router();
-// const mongoose = require('mongoose');
-// const mongodb = require('mongodb');
-// const MongoClient = mongodb.MongoClient;
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
-//<link rel="stylesheet" type="text/css" href="pagesty.css"></link>
-
+const jwt = require('jsonwebtoken')
 // const MongoClient = require('mongodb').MongoClient;
 // let client = null;
 
-// function Connect()
-// {
-//     if(client == null)
-//     {
-//         const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";
-//         client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true }); 
-//     }
-// }
-
-// Connect();
-
-
-router.get('/', function(req, res){
-    res.send('Hello World! ACM Website coming soon.');
-});
 //GETALL
 router.get('/members',function(req, res, next){
     //gives all user data including the salt and hash data. maybe we no give that data for security
@@ -46,8 +27,8 @@ router.get('/members',function(req, res, next){
         });
     });
 });
-//Get one orrrr have this be the list of all the members viewable by only name or name and w_num
-//What I beleve I will need to fuck with. pos have HTML script to display our members in an HTML Display.
+
+//Get one
 router.get('/member', jsonParser, function(req, res, next){
     const MongoClient = require('mongodb').MongoClient;
     const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";
@@ -97,7 +78,7 @@ client.connect(err => {
 });
 
 //update member info
-router.put('/extend', jsonParser , function(req, res){
+router.put('/extend', verifylogin ,jsonParser , function(req, res){
     const MongoClient = require('mongodb').MongoClient;
     const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";
     const client = new MongoClient(uri, { useNewUrlParser: true,
@@ -108,19 +89,21 @@ router.put('/extend', jsonParser , function(req, res){
         var ObjectID = require("mongodb").ObjectID
         var up_date = new Date();
         var expiration_date = new Date(up_date.getTime() + 1000 * 60 * 60 * 24 * 365);
-        collection.findOneAndUpdate({w_num: req.body.w_num}, {$set: {expiration_date : expiration_date}}).then(function(error, result) {
-            if(error) {
-                return res.status(500).send(error);
+        jwt.verify(req.token, 'loginkey',(err,authData) =>{
+            if(err) {
+                return res.status(500).send(err);
+            }else{
+                authData
+                console.log(expiration_date);
+                collection.findOneAndUpdate({w_num: req.body.w_num}, {$set: {expiration_date : expiration_date}}).then(function(error, result) {
+                });
             }
-            console.log(expiration_date);
         });
     });
 });
 
-
-
 //delete member
-router.delete('/delete', jsonParser ,function(req, res){
+router.delete('/delete', verifylogin , jsonParser ,function(req, res){
     const MongoClient = require('mongodb').MongoClient;
     const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";
     const client = new MongoClient(uri, { useNewUrlParser: true,
@@ -129,13 +112,48 @@ router.delete('/delete', jsonParser ,function(req, res){
     client.connect(err => {
     const collection = client.db("ACM").collection("Member");
         var ObjectID = require("mongodb").ObjectID
-        collection.findOneAndDelete({w_num: req.body.w_num}).then(function(error, result) {
-            if(error) {
-                return res.status(500).send(error);
+        jwt.verify(req.token, 'loginkey',(err,authData) =>{
+            if(err) {
+                return res.status(500).send(err);
+            }else{
+                authData
+                collection.findOneAndDelete({w_num: req.body.w_num}).then(function(error, result) {
+                res.send("This member was removed.");
+                });
             }
-            res.send("This member was removed.");
         });
     });
 });
-
+router.post('/login',jsonParser,function(req,res){
+    const MongoClient = require('mongodb').MongoClient;
+    const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";
+    const client = new MongoClient(uri, { useNewUrlParser: true,
+        useUnifiedTopology: true
+    });    
+    client.connect(err => {
+    const collection = client.db("ACM").collection("Member");
+        var ObjectID = require("mongodb").ObjectID
+        jwt.sign({"w_num": "w_num"}, 'loginkey', (err, token) => {
+             if(err) {
+                return res.status(500).send(error);
+            }
+            res.json({
+                token
+            })
+        })
+           
+    })
+})
+function verifylogin(req, res, next){
+    const bearerHeader = res.headers['authorization'];
+    if(typeof bearerHeader !== 'undefined'){
+        const bearer = bearerHeader.split(' ')
+        const bearerToken = bearer[1];
+        req.token = bearerToken
+        next();
+    }
+    else{
+        res.sendStatus(403);
+    }
+}
 module.exports = router;
