@@ -7,8 +7,6 @@ app.appendChild(container)
 
 var request = new XMLHttpRequest()
 
-request.open('GET', 'http://slu-acm.herokuapp.com/member', true)
-request.onload = function() {
   // Begin accessing JSON data here
   var memdat = JSON.parse(this.response)
       const card = document.createElement('div')
