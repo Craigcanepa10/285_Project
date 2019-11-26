@@ -3,9 +3,7 @@ const User = require('../models/user');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
-const jwt = require('jsonwebtoken')
-// const MongoClient = require('mongodb').MongoClient;
-// let client = null;
+// export function 
 
 //GETALL
 router.get('/members',function(req, res, next){
@@ -30,15 +28,18 @@ router.get('/members',function(req, res, next){
 
 //Get one
 router.get('/member', jsonParser, function(req, res, next){
+    const member_to_get = req.query.member;
     const MongoClient = require('mongodb').MongoClient;
     const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";
     const client = new MongoClient(uri, { useNewUrlParser: true,
         useUnifiedTopology: true
     });    
+         //example request: GET root_url/member?member=<W_NUMBER>
+
     client.connect(err => {
         const collection = client.db("ACM").collection("Member");
         var ObjectID = require("mongodb").ObjectID
-        collection.find({w_num: req.body.w_num}).toArray(function(error, result) {
+        collection.find({w_num: member_to_get}).toArray(function(error, result) {
             if(error) {
                 return res.status(500).send(error);
             }

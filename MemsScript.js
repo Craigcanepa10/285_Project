@@ -16,7 +16,7 @@ request.onload = function() {
       const card = document.createElement('div')
       card.setAttribute('class', 'card')
 
-      const h2 = document.createElement('h2')
+      const h2 = document.createElement('h7')
       h2.textContent = Member.first_name + " " + Member.last_name
 
       const info_e = document.createElement('p')
