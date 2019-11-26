@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<link rel="stylesheet" type="text/css" href="CSS/login.css"></link>
 <style>
 body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
 body {font-size:16px;}
@@ -21,7 +22,7 @@ body {font-size:16px;}
     <h3 class="w3-padding-64"><b>Southeastern's ACM</b></h3>
   </div>
   <div class="w3-bar-block">
-    <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="About Us" onclick='window.location.href="Home.html"'/>
+    <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white w3-transparent" value="About Us" onclick='window.location.href="Home.html"'/>
     <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="Members" onclick='window.location.href="Members.html"'/>
     <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="Calendar" onclick='window.location.href="Calendar.html"'/> 
     <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="Resources" onclick='window.location.href="Resources.html"'/> 
@@ -50,15 +51,18 @@ body {font-size:16px;}
 
 
 <!-- Sign up -->
- <div class="w3-container" id="Sign" style="margin-top:75px">
- 
- <input type="button" name="doCreate" class="w3-button w3-block w3-padding-large w3-yellow w3-margin-bottom" value="Sign Up" onclick='window.location.href="http://localhost:4200/signup"'/>
- </div>
+ <!-- <div class="w3-container" id="Sign" style="margin-top:75px"> -->
+ <!-- <input type="button" name="doCreate" class="w3-button w3-block w3-padding-large w3-yellow w3-margin-bottom" value="Sign Up" onclick='window.location.href="http://localhost:4200/signup"'/> -->
+ <!-- </div> -->
  
  <!-- Log In -->
- <div class="w3-container" id="Login" style="margin-top:75px">
+ <!-- <div class="w3-container" id="Login" style="margin-top:75px"> -->
+<div class= "wrapper fadInDown">
+  <div id="formContent">
+    <h4 class="interactive underlineHover">Sign In</h4>
+    <h4 class="interactive underlineHover">Sign up</h4>
   <form action="action_page.php" method="post">
-    <div class="container">
+    <!-- <div class="container"> -->
       <label for="uname"><b>W_Number</b></label>
       <input type="text" placeholder="Enter WNumber" name="uname" required>
   
@@ -69,11 +73,12 @@ body {font-size:16px;}
       <label>
         <input type="checkbox" checked="checked" name="remember"> Remember me
       </label>
-    </div>
+      <br>
+    <!-- </div> -->
   
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
+    <!-- <div class="container" style="background-color:#f1f1f1"> -->
+      <!-- <button type="button" class="cancelbtn">Cancel</button> -->
+      <span class="psw"><a href="#">Forgot password?</a></span>
     </div>
   </form>
   </div>
