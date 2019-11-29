@@ -6,8 +6,12 @@ container.setAttribute('class', 'container')
 app.appendChild(container)
 
 var request = new XMLHttpRequest()
+<<<<<<< HEAD
 
 request.open('GET', 'http://slu-acm.herokuapp.com/member', true)
+=======
+request.open('GET', 'http://localhost:3000/member?member=w0689465', true)
+>>>>>>> b126c0be74928a8d2ec562d443fd7c70633fc815
 request.onload = function() {
   // Begin accessing JSON data here
   var memdat = JSON.parse(this.response)
@@ -29,6 +33,9 @@ request.onload = function() {
       const info_s = document.createElement('p')
       info_s.textContent = `Signup Data: ` + Member.signup_date
 
+      const info_a = document.createElement('p')
+      info_s.textContent = `Active: ` + Member.active
+
       const info_ed = document.createElement('p')
       info_ed.textContent = `Expiration Date: ` + Member.expiration_date
 
@@ -39,6 +46,7 @@ request.onload = function() {
       card.appendChild(info_m)
       card.appendChild(info_w)
       card.appendChild(info_s)
+      card.appendChild(info_a)
       card.appendChild(info_ed)
 
 }

@@ -97,6 +97,9 @@ router.put('/extend', verifylogin ,jsonParser , function(req, res){
                 console.log(expiration_date);
                 collection.findOneAndUpdate({w_num: req.body.w_num}, {$set: {expiration_date : expiration_date}}).then(function(error, result) {
                 });
+                //HAVE NOT TESTED
+                collection.findOneAndUpdate({active: req.body.active}, {$set: {active : true}}).then(function(error, result) {
+                });
             }
         });
     });
@@ -124,6 +127,7 @@ router.delete('/delete', verifylogin , jsonParser ,function(req, res){
         });
     });
 });
+
 router.post('/login',jsonParser,function(req,res){
     const MongoClient = require('mongodb').MongoClient;
     const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";

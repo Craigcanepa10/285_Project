@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  //apiBaseUrl: 'mongodb+srv://Craig:front-end-boi@acm-eb7i4mongodb.net/test?retryWrites=true&w=majority'
-  apiBaseUrl: 'http//slu-acm.herokuapp.com/',
+  apiBaseUrl: 'http://localhost:3000/'
+  //apiBaseUrl: 'http//slu-acm.herokuapp.com/'
 };
 
 /*

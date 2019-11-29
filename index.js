@@ -10,6 +10,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 */
+const port = 3000;
 const express = require('express');
 const bodyParser = require('body-parser');
 const crypto = require('crypto');
@@ -23,12 +24,6 @@ var app = express();
 
 app.use(cors());
 app.use(require("./routes/api"));
-
-const port = 3000;
-
-app.get('/payment', function(req, res){
-    res.sendFile(path.join(__dirname + '/SquarePayment.html'));
-});
 
 // Set the Access Token
 const accessToken = 'EAAAEKDwSDis1VvnsL1r-dH7osBbcfRjA0WSE1p2fp8GWjgtQxll4gtnh6mDEQRw';
