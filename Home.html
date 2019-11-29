@@ -18,8 +18,11 @@ body {font-size:16px;}
 <nav class="w3-sidebar w3-green w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
   <div class="w3-container">
-    <h3 class="w3-padding-64"><b>ACM at Southeastern Louisiana University</b></h3>
+    <p><br></p>
+    <img src="southeastern-logo.png" alt="logo" style="width:100%">
+    <p><br></p>
   </div>
+
   <div class="w3-bar-block">
     <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="About Us" onclick='window.location.href="Home.html"'/>
     <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="Officers" onclick='window.location.href="Officers.html"'/>
@@ -32,6 +35,7 @@ body {font-size:16px;}
 <!-- Top menu on small screens -->
 <header class="w3-container w3-top w3-hide-large w3-green w3-xlarge w3-padding">
   <a href="javascript:void(0)" class="w3-button w3-green w3-margin-left" onclick="w3_open()">☰</a>
+  <img src="S_logo.png" alt="logo" style="height:100%">
   <span>Association for Computing Machinery</span>
 </header>
 
@@ -44,18 +48,23 @@ body {font-size:16px;}
   <!-- Header -->
   <div class="w3-container" style="margin-top:80px" id="showcase">
    
-    <h1 class="w3-xlarge w3-text-yellow"><b>"Advancing Computing as a Science & Profession."</b></h1>
+    <h1 class="w3-xlarge w3-text-yellow"><b><br>"Advancing Computing as a Science & Profession."</b></h1>
   </div>
  
  <!-- About -->
- <div class="w3-container" id="About" style="margin-top:75px">
-  <h1 class="w3-xxxlarge w3-text-yellow"><b>About Us</b></h1>
+ <div> 
+ <h1 class="w3-xxxlarge w3-text-yellow"><b>About Us</b></h1>
   <p>A professional and social group of computer science and IT majors for the enrichment of the students. Get to know fellow programmers, exchange tips, laugh and learn codes. Spread your network within computer community.</p>
+  
+  <h1 class="w3-xxxlarge w3-text-yellow"><b>National Info</b></h1>
+  <p>blurb</p>
+  
 </div>
 
 <!-- Sign up -->
  <div class="w3-container" id="Sign" style="margin-top:75px">
- 
+  <input type="button" name="doCreate" class="w3-button w3-block w3-padding-large w3-yellow w3-margin-bottom" value="National Webpage" onclick='window.location.href="https://www.acm.org/"'/>
+  
  <input type="button" name="doCreate" class="w3-button w3-block w3-padding-large w3-yellow w3-margin-bottom" value="Sign Up" onclick='window.location.href="http://localhost:4200/signup"'/>
  </div>
  
@@ -85,7 +94,6 @@ body {font-size:16px;}
 </div>
 
 <script>
-
 function openForm() {
   document.getElementById("myForm").style.display = "block";
 }
@@ -111,7 +119,6 @@ function w3_close() {
 <style>
 body {font-family: "Poppins", sans-serif}
 * {box-sizing: border-box;}
-
 /* Button used to open the chat form - fixed at the bottom of the page */
 .open-button {
   background-color: #555;
@@ -182,7 +189,7 @@ body {font-family: "Poppins", sans-serif}
   opacity: 1;
 }
 body {
-margin-bottom: 200%;
+margin-bottom: 20%;
 }
 
 /* Box styles */
@@ -211,7 +218,6 @@ background: rgb(255, 255, 255);
 ::-webkit-scrollbar-thumb:hover {
 background: #999;  
 }
-
 </style>
 </head>
 <body>
