@@ -87,7 +87,7 @@
     width: 100%;
     height: 56px;
     margin-top: 10px;
-    background: #4A90E2;
+    background: #d2be0e;
     border-radius: 6px;
     cursor: pointer;
     display: block;
@@ -104,5 +104,5 @@
   }
   
   .button-credit-card:hover {
-    background-color: #4281CB;
+    background-color: #249424;
   }

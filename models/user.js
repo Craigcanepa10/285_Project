@@ -33,7 +33,7 @@ const UserSchema = new Schema({
         type: String,
         default: "Member"
     },
-    paid: {
+    active: {
         type: Boolean,
         default: false
     },
