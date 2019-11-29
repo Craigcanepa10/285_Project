@@ -13,7 +13,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const crypto = require('crypto');
-const squareConnect = require('square-connect');
+// const squareConnect = require('square-connect');
 const listEndpoints = require('express-list-endpoints');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
@@ -38,16 +38,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname));
 
 // Set Square Connect credentials and environment
-const defaultClient = squareConnect.ApiClient.instance;
+// const defaultClient = squareConnect.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: oauth2
-const oauth2 = defaultClient.authentications['oauth2'];
-oauth2.accessToken = accessToken;
+// const oauth2 = defaultClient.authentications['oauth2'];
+// oauth2.accessToken = accessToken;
 
 // Set 'basePath' to switch between sandbox env and production env
 // sandbox: https://connect.squareupsandbox.com
 // production: https://connect.squareup.com
-defaultClient.basePath = 'https://connect.squareupsandbox.com';
+// defaultClient.basePath = 'https://connect.squareupsandbox.com';
 
 app.post('/process-payment', async (req, res) => {
   const request_params = req.body;
