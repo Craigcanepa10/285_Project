@@ -28,7 +28,6 @@ body {font-size:16px;}
     <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="Calendar" onclick='window.location.href="Calendar.html"'/> 
     <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="Resources" onclick='window.location.href="Resources.html"'/> 
     <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="Events" onclick='window.location.href="Events.html"'/> 
-    <input type="button" name="doCreate" class="w3-button w3-block w3-padding-large w3-hover-white w3-yellow w3-margin-bottom" value="Sign Up and Sign In" onclick='window.location.href="http://localhost:4200/signup"'/>
    </div>
 </nav>
 
@@ -76,7 +75,34 @@ body {font-size:16px;}
     <input type="button" name="doCreate" class="w3-button w3-block w3-padding-large w3-yellow w3-margin-bottom" value="Industrial and Engineering Technology" onclick='window.location.href="http://www.southeastern.edu/acad_research/depts/iet/index.html"'/>
   
   </div>
-
+<!-- Sign up -->
+ <div class="w3-container" id="Sign" style="margin-top:75px">
+ 
+ <input type="button" name="doCreate" class="w3-button w3-block w3-padding-large w3-yellow w3-margin-bottom" value="Sign Up" onclick='window.location.href="http://localhost:4200/signup"'/>
+ </div>
+ 
+ <!-- Log In -->
+ <div class="w3-container" id="Login" style="margin-top:75px">
+  <form action="action_page.php" method="post">
+    <div class="container">
+      <label for="uname"><b>W_Number</b></label>
+      <input type="text" placeholder="Enter WNumber" name="uname" required>
+  
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+  
+      <button type="submit" class="w3-button w3-block w3-padding-large w3-yellow w3-margin-bottom">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+  
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+  </div>
 <!-- End page content -->
 </div>
 
