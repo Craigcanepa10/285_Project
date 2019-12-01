@@ -38,7 +38,7 @@ router.get('/member', jsonParser, function(req, res, next){
     client.connect(err => {
         const collection = client.db("ACM").collection("Member");
         var ObjectID = require("mongodb").ObjectID
-        collection.find({w_num: req.body.w_num}).toArray(function(error, result) {
+        collection.find({w_num: req.query.member}).toArray(function(error, result) {
             if(error) {
                 return res.status(500).send(error);
             }

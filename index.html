@@ -31,6 +31,7 @@ body {font-size:16px;}
     <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="Resources" onclick='window.location.href="Resources.html"'/> 
     <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="Events" onclick='window.location.href="Events.html"'/>  
     <input type="button" name="doCreate" class="w3-button w3-block w3-padding-large w3-hover-white w3-yellow w3-margin-bottom" value="Sign Up and Sign In" onclick='window.location.href="http://localhost:4200/signup"'/>
+    <input type="button" name="doCreate" class="w3-button w3-block w3-padding-large w3-hover-white w3-yellow w3-margin-bottom" value="Meeting Check-In" onclick='window.location.href="CheckIn.html"'/>
    </div>
 </nav>
 
@@ -44,7 +45,7 @@ body {font-size:16px;}
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:340px;margin-right:40px">;
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
   <!-- Header -->
   <div class="w3-container" style="margin-top:80px" id="showcase">
    
@@ -56,17 +57,17 @@ body {font-size:16px;}
   <!-- Full-width images with number and caption text -->
   <div class="mySlides fade">
     <div class="numbertext">1 / 3</div>
-    <img src="Slide/1.jpg" style="height:300px">
+    <img src="Slide/1.jpg" style="height:500px">
   </div>
 
   <div class="mySlides fade">
     <div class="numbertext">2 / 3</div>
-    <img src="Slide/2.jpg" style="height:300px">
+    <img src="Slide/2.jpg" style="height:500px">
   </div>
 
   <div class="mySlides fade">
     <div class="numbertext">3 / 3</div>
-    <img src="Slide/4.jpg" style="height:300px">
+    <img src="Slide/4.jpg" style="height:500px">
   </div>
 
   <!-- Next and previous buttons -->
@@ -155,7 +156,7 @@ function showSlides() {
   slideIndex++;
   if (slideIndex > slides.length) {slideIndex = 1}
   slides[slideIndex-1].style.display = "block";
-  setTimeout(showSlides, 5000); // Change image every 5 seconds
+  setTimeout(showSlides, 10000); // Change image every 10 seconds
 } 
 </script>
 <head>

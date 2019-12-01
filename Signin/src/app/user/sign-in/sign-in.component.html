@@ -1,3 +1,6 @@
+  <div>
+    <img src="/assets/users.png" id="icon" alt="User Icon" style="height: 100px; width: 70px"/>
+  </div>
   <form #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
     <input type="text" name="email" #email="ngModel" [(ngModel)]="model.email" placeholder="Email" [pattern]="emailRegex" required
       [ngClass]="{'invalid-textbox' :signInForm.submitted && !email.valid }">
@@ -9,7 +12,7 @@
     <div *ngIf="signInForm.submitted && password.errors?.minlength">
       <label class="validation-message">Minimum 4 characters.</label>
     </div>
-    <input type="submit" value="Sign In">
+    <input type="submit" value="Sign In" onclick='window.location.href="http://localhost:3000/LoggedIn.html"'>
   </form>
   <!-- Error message -->
 <div class="alert" *ngIf="serverErrorMessages">
