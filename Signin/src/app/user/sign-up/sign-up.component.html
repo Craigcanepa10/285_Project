@@ -1,5 +1,5 @@
 <div>
-  <img src="/assets/users.png" id="icon" alt="User Icon" />
+  <img src="/assets/users.png" id="icon" alt="User Icon" style="height: 100px; width: 70px"/>
 </div>
 <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
     <input type="text" #first_name="ngModel" [(ngModel)]="userService.selectedUser.first_name" name= "first_name" placeholder="First Name"
@@ -20,7 +20,7 @@
     <input type="password" #password="ngModel" [(ngModel)]="userService.selectedUser.password" name="password" placeholder="Password"
     minlength= "6" required [ngClass]= "{'invalid-textbox' :signUpForm.submitted && !password.valid}"/>
 
-    <input type="submit" value="sign Up" onclick='window.location.href="http://localhost:3000/login.html"'/>
+    <input type="submit" value="sign Up" onclick='window.location.href="http://localhost:4200/login"'/>
 </form>
 
 <div class = "success" *ngIf="showSucessMessage">

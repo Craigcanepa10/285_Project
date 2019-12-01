@@ -36,35 +36,40 @@ window.onload = function date_check() {
 
 <div class= "wrapper fadInDown">
         <div id="formContent">
-            <h2 class="interactive underlineHover">Sign In Forms</h2>
+            <h2 class="interactive underlineHover">Check-In Forms</h2>
             <router-outlet></router-outlet>
     
 
 <form name="Here_Vari" action="" onsubmit="" method="">
   <!-- the value is the date of the meeting which the function is checking  set as MM/DD/YYYY-->
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLScQmkq1dpCzJ4eQI9ewZMfQhFGAcCf_GUz5-7QTk6OqVhp4fQ/viewform?usp=sf_link">
+    <input type="button" name="group1"  placeholder="Sign in" value="08/21/2019"/>
+    </a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLScQmkq1dpCzJ4eQI9ewZMfQhFGAcCf_GUz5-7QTk6OqVhp4fQ/viewform?usp=sf_link">
+    <input type="button" name="group1"  placeholder="Sign in" value="09/04/2019"/>
+    </a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLScQmkq1dpCzJ4eQI9ewZMfQhFGAcCf_GUz5-7QTk6OqVhp4fQ/viewform?usp=sf_link">
+    <input type="button" name="group1"  placeholder="Sign in" value="09/18/2019"/>
+    </a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLScQmkq1dpCzJ4eQI9ewZMfQhFGAcCf_GUz5-7QTk6OqVhp4fQ/viewform?usp=sf_link">
+    <input type="button" name="group1"  placeholder="Sign in" value="10/02/2019"/>
+    </a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLScQmkq1dpCzJ4eQI9ewZMfQhFGAcCf_GUz5-7QTk6OqVhp4fQ/viewform?usp=sf_link">
+    <input type="button" name="group1"  placeholder="Sign in" value="10/16/2019"/>
+    </a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLScQmkq1dpCzJ4eQI9ewZMfQhFGAcCf_GUz5-7QTk6OqVhp4fQ/viewform?usp=sf_link">
+    <input type="button" name="group1"  placeholder="Sign in" value="11/06/2019"/>
+    </a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLScQmkq1dpCzJ4eQI9ewZMfQhFGAcCf_GUz5-7QTk6OqVhp4fQ/viewform?usp=sf_link">
+    <input type="button" name="group1"  placeholder="Sign in" value="11/20/2019"/>
+    </a>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScQmkq1dpCzJ4eQI9ewZMfQhFGAcCf_GUz5-7QTk6OqVhp4fQ/viewform?usp=sf_link">
-        <input type="button" name="group1"  placeholder="Sign in" value="09/10/2019"/>
+        <input type="button" name="group1"  placeholder="Sign in" value="12/01/2019"/>
         </a>
 
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScQmkq1dpCzJ4eQI9ewZMfQhFGAcCf_GUz5-7QTk6OqVhp4fQ/viewform?usp=sf_link">
-        <input type="button" name="group1"  placeholder="Sign in" value="10/21/2019"/>
-        </a>
-    
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScQmkq1dpCzJ4eQI9ewZMfQhFGAcCf_GUz5-7QTk6OqVhp4fQ/viewform?usp=sf_link">
-        <input type="button" name="group1"  placeholder="Sign in" value="10/22/2019"/>
-        </a>
-
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScQmkq1dpCzJ4eQI9ewZMfQhFGAcCf_GUz5-7QTk6OqVhp4fQ/viewform?usp=sf_link">
-        <input type="button" name="group1"  placeholder="Sign in" value="11/21/2019"/>
-        </a>
-
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScQmkq1dpCzJ4eQI9ewZMfQhFGAcCf_GUz5-7QTk6OqVhp4fQ/viewform?usp=sf_link">
-        <input type="button" name="group1"  placeholder="Sign in" value="12/22/2019"/>
-        </a>
-
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScQmkq1dpCzJ4eQI9ewZMfQhFGAcCf_GUz5-7QTk6OqVhp4fQ/viewform?usp=sf_link">
-        <input type="button" name="group1"  placeholder="Sign in" value="10/21/2020"/>
-        </a>
+          <input type="button" name="group1"  placeholder="Sign in" value="12/04/2019"/>
+          </a>
     
     </form>
 
@@ -79,20 +84,21 @@ window.onload = function date_check() {
     
   window.onload = function date_check() {
     var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
+    var dd = String(today.getDay() + 1).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();
     today = mm + '/' + dd + '/' + yyyy;
+    console.log(today);
 
     var form_length = Here_Vari.elements.length;
 
     for(i=0; i<form_length; i++){
       if(document.Here_Vari.group1[i].value === today){
         document.Here_Vari.group1[i].disabled = false;
-        document.Here_Vari.group1[i].value = 'Meeting Sign-in';
+        //document.Here_Vari.group1[i].value = 'Meeting Sign-in';
       } else{
         document.Here_Vari.group1[i].disabled = true;
-        document.Here_Vari.group1[i].value = 'Disabled';
+        //document.Here_Vari.group1[i].value = 'Disabled';
       }
     }
     

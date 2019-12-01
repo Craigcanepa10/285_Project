@@ -21,7 +21,13 @@
     <link rel="stylesheet" type="text/css" href="mysqpaymentform.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
-<link rel="stylesheet" type="text/css" href="CSS/login.css"></link>
+
+<style>
+  body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+  body {font-size:16px;}
+  .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+  .w3-half img:hover{opacity:1}
+  </style>
     
     <title>Fee Payment</title>
     <meta charset="UTF-8">
@@ -41,7 +47,8 @@
     <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="Officers" onclick='window.location.href="Officers.html"'/>
     <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="Calendar" onclick='window.location.href="Calendar.html"'/> 
     <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="Resources" onclick='window.location.href="Resources.html"'/> 
-    <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="Events" onclick='window.location.href="Events.html"'/> 
+    <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="Events" onclick='window.location.href="Events.html"'/>
+    <input type="button" name="doCreate" class="w3-button w3-block w3-padding-large w3-hover-white w3-yellow w3-margin-bottom" value="Meeting Check-In" onclick='window.location.href="CheckIn.html"'/>
    </div>
 </nav>
 
@@ -153,6 +160,7 @@
               })
               .then(data => {
                 console.log(JSON.stringify(data));
+                href=""
 
                 alert('Payment complete successfully!\nCheck browser developer console for more details');
               })
