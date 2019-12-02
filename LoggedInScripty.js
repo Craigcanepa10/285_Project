@@ -6,10 +6,12 @@ container.setAttribute('class', 'container')
 app.appendChild(container)
 
 var request = new XMLHttpRequest()
-request.open('GET', 'http://slu-acm.herokuapp.com/member?member=w00fw00f', false)
+// request.open('GET', 'http://slu-acm.herokuapp.com/member?member=w00fw00f', false
+request.open('GET', 'http://localhost:3000/member?member=w00fw00f', false);
 request.onload = function() {
   // Begin accessing JSON data here
   var memdat = JSON.parse(this.response)
+  memdat.forEach(Member => {
       const card = document.createElement('div')
       card.setAttribute('class', 'card')
 
@@ -43,7 +45,7 @@ request.onload = function() {
       card.appendChild(info_s)
       card.appendChild(info_a)
       card.appendChild(info_ed)
-
+  });
 }
 
 request.send()
