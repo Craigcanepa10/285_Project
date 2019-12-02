@@ -6,7 +6,7 @@ container.setAttribute('class', 'container')
 app.appendChild(container)
 
 var request = new XMLHttpRequest()
-request.open('GET', 'http://localhost:3000/member?member=w0689465', false)
+request.open('GET', 'http://slu-acm.herokuapp.com/member?member=w00fw00f', false)
 request.onload = function() {
   // Begin accessing JSON data here
   var memdat = JSON.parse(this.response)
