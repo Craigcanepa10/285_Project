@@ -59,7 +59,7 @@ h2 {
   margin: 1rem;
   box-sizing: border-box;
   padding: 6px;
-  width: 30%;
+  width: auto;
   height: auto;
   text-align: center;
   background: lightgrey;

@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
-
 <style>
 body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
 body {font-size:16px;}
@@ -30,7 +29,11 @@ body {font-size:16px;}
     <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="Calendar" onclick='window.location.href="Calendar.html"'/> 
     <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="Resources" onclick='window.location.href="Resources.html"'/> 
     <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="Events" onclick='window.location.href="Events.html"'/>  
-    <input type="button" name="doCreate" class="w3-button w3-block w3-padding-large w3-hover-white w3-yellow w3-margin-bottom" value="Sign Up and Sign In" onclick='window.location.href="http://localhost:4200/signup"'/>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="654921861260-26j5c7bn047qcuceir202gak2vvn6gcl.apps.googleusercontent.com">
+  <div class="g-signin2" data-onsuccess="onSignIn"></div>
+  <br>  
+  <input type="button" name="doCreate" class="w3-button w3-block w3-padding-large w3-hover-white w3-yellow w3-margin-bottom" value="Sign Up and Sign In" onclick='window.location.href="http://localhost:4200/signup"'/>
     <input type="button" name="doCreate" class="w3-button w3-block w3-padding-large w3-hover-white w3-yellow w3-margin-bottom" value="Meeting Check-In" onclick='window.location.href="CheckIn.html"'/>
    </div>
 </nav>
@@ -86,18 +89,27 @@ body {font-size:16px;}
  <!-- About -->
  <div> 
  <h1 class="w3-xxxlarge w3-text-yellow"><b>About Us</b></h1>
-  <p>A professional and social group of computer science and IT majors for the enrichment of the students. Get to know fellow programmers, exchange tips, laugh and learn codes. Spread your network within computer community.</p>
+  <p>The Association for Computing Machinery (ACM) at Southeastern Louisiana University is student chapter of the ACM Organization. We are a professional and social group of computer science and IT majors for the enrichment of the students. Get to know fellow programmers, exchange tips, laugh and learn codes. Spread your network within computer community.</p>
   
   <h1 class="w3-xxxlarge w3-text-yellow"><b>National Info</b></h1>
-  <p>blurb</p>
-  
+  <p>"ACM brings together computing educators, researchers, and professionals to inspire dialogue, share resources, and address the field's challenges. As the world’s largest computing society, ACM strengthens the profession's collective voice through strong leadership, promotion of the highest standards, and recognition of technical excellence. ACM supports the professional growth of its members by providing opportunities for life‐long learning, career development, and professional networking."
+    <br>-The ACM Organization
+  </p>
+  <input type="button" name="doCreate" class="w3-button w3-block w3-padding-large w3-yellow w3-margin-bottom" value="About the ACM Organization" onclick='window.location.href="https://www.acm.org/about-acm/about-the-acm-organization"'/>
 </div>
 
 <!-- End page content -->
 </div>
 
 <script>
-  
+function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+}
+
 function openForm() {
   document.getElementById("myForm").style.display = "block";
 }
@@ -159,6 +171,8 @@ function showSlides() {
   setTimeout(showSlides, 10000); // Change image every 10 seconds
 } 
 </script>
+
+
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -171,6 +185,7 @@ function showSlides() {
 }
 body {font-family: "Poppins", sans-serif}
 * {box-sizing: border-box;}
+
 /* Button used to open the chat form - fixed at the bottom of the page */
 .open-button {
   background-color: #555;

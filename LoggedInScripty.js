@@ -6,10 +6,11 @@ container.setAttribute('class', 'container')
 app.appendChild(container)
 
 var request = new XMLHttpRequest()
-request.open('GET', 'http://localhost:3000/member?member=w0689465', false)
+request.open('GET', 'http://localhost:3000/member?w_num=w0689465', true)
 request.onload = function() {
   // Begin accessing JSON data here
   var memdat = JSON.parse(this.response)
+  memdat.forEach(Member => {
       const card = document.createElement('div')
       card.setAttribute('class', 'card')
 
@@ -44,6 +45,6 @@ request.onload = function() {
       card.appendChild(info_a)
       card.appendChild(info_ed)
 
+});
 }
-
 request.send()

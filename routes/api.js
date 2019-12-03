@@ -38,7 +38,7 @@ router.get('/member', jsonParser, function(req, res, next){
     client.connect(err => {
         const collection = client.db("ACM").collection("Member");
         var ObjectID = require("mongodb").ObjectID
-        collection.find({w_num: req.query.member}).toArray(function(error, result) {
+        collection.find({w_num: req.query.w_num}).toArray(function(error, result) {
             if(error) {
                 return res.status(500).send(error);
             }
@@ -78,53 +78,42 @@ client.connect(err => {
 });
 
 //update member info
-router.put('/extend', verifylogin ,jsonParser , function(req, res){
+router.put('/extend', jsonParser , function(req, res){
     const MongoClient = require('mongodb').MongoClient;
     const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";
     const client = new MongoClient(uri, { useNewUrlParser: true,
         useUnifiedTopology: true
     });    
     client.connect(err => {
-    const collection = client.db("ACM").collection("Member");
-        var ObjectID = require("mongodb").ObjectID
-        var up_date = new Date();
-        var expiration_date = new Date(up_date.getTime() + 1000 * 60 * 60 * 24 * 365);
-        jwt.verify(req.token, 'loginkey',(err,authData) =>{
-            if(err) {
-                return res.status(500).send(err);
-            }else{
-                authData
+        const collection = client.db("ACM").collection("Member");
+            var ObjectID = require("mongodb").ObjectID
+            var up_date = new Date();
+            var expiration_date = new Date(up_date.getTime() + 1000 * 60 * 60 * 24 * 365);
+            collection.findOneAndUpdate({w_num: req.query.w_num}, {$set: {expiration_date : expiration_date, active: true}}).then(function(error, result) {
+                if(error) {
+                    return res.status(500).send(error);
+                }
                 console.log(expiration_date);
-                collection.findOneAndUpdate({w_num: req.body.w_num}, {$set: {expiration_date : expiration_date}}).then(function(error, result) {
-                });
-                //HAVE NOT TESTED
-                collection.findOneAndUpdate({active: req.body.active}, {$set: {active : true}}).then(function(error, result) {
-                });
-            }
+            });
         });
-    });
 });
 
 //delete member
-router.delete('/delete', verifylogin , jsonParser ,function(req, res){
+router.delete('/delete', jsonParser ,function(req, res){
     const MongoClient = require('mongodb').MongoClient;
     const uri = "mongodb+srv://jpeter:0nyx@acm-eb7i4.mongodb.net/test?retryWrites=true&w=majority";
     const client = new MongoClient(uri, { useNewUrlParser: true,
         useUnifiedTopology: true
     });    
     client.connect(err => {
-    const collection = client.db("ACM").collection("Member");
-        var ObjectID = require("mongodb").ObjectID
-        jwt.verify(req.token, 'loginkey',(err,authData) =>{
-            if(err) {
-                return res.status(500).send(err);
-            }else{
-                authData
-                collection.findOneAndDelete({w_num: req.body.w_num}).then(function(error, result) {
+        const collection = client.db("ACM").collection("Member");
+            var ObjectID = require("mongodb").ObjectID
+            collection.findOneAndDelete({w_num: req.body.w_num}).then(function(error, result) {
+                if(error) {
+                    return res.status(500).send(error);
+                }
                 res.send("This member was removed.");
-                });
-            }
-        });
+            });
     });
 });
 

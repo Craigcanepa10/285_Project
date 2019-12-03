@@ -33,5 +33,7 @@ export class SignInComponent implements OnInit {
     if(this.userService.isLoggedIn())
     this.router.navigateByUrl('/userprofile');
   }
+  
 
 }
+
