@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
-<link rel="stylesheet" type="text/css" href="CSS/login.css"></link>
+
 <style>
 body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
 body {font-size:16px;}
@@ -29,9 +29,13 @@ body {font-size:16px;}
     <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="Officers" onclick='window.location.href="Officers.html"'/>
     <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="Calendar" onclick='window.location.href="Calendar.html"'/> 
     <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="Resources" onclick='window.location.href="Resources.html"'/> 
-    <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="Events" onclick='window.location.href="Events.html"'/>
-    <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="Login" onclick='window.location.href="Login.html"'/> 
-    <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="Sign Up" onclick='window.location.href="http://localhost:4200/signup"'/>
+    <input type="button" name="doCreate" class="w3-bar-item w3-button w3-hover-white" value="Events" onclick='window.location.href="Events.html"'/> 
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="654921861260-26j5c7bn047qcuceir202gak2vvn6gcl.apps.googleusercontent.com">
+  <div class="g-signin2" data-onsuccess="onSignIn"></div>
+  <br>  
+  <input type="button" name="doCreate" class="w3-button w3-block w3-padding-large w3-hover-white w3-yellow w3-margin-bottom" value="Sign Up and Sign In" onclick='window.location.href="http://localhost:4200/signup"'/>
+    <input type="button" name="doCreate" class="w3-button w3-block w3-padding-large w3-hover-white w3-yellow w3-margin-bottom" value="Meeting Check-In" onclick='window.location.href="CheckIn.html"'/>
    </div>
 </nav>
 
@@ -39,8 +43,7 @@ body {font-size:16px;}
 <header class="w3-container w3-top w3-hide-large w3-green w3-xlarge w3-padding">
   <a href="javascript:void(0)" class="w3-button w3-green w3-margin-left" onclick="w3_open()">☰</a>
 
-  <img src="S_logo.png" alt="logo" style="height:100%">
-  <span>Association for Computing Machinery</span>
+    <span>Association for Computing Machinery</span>
 </header>
 
 <!-- Overlay effect when opening sidebar on small screens -->
@@ -57,15 +60,18 @@ body {font-size:16px;}
 
   <!-- SLUGO -->
   <h1 class="w3-xxxlarge w3-text-yellow"><b>SLUGO </b></h1>
-  <p>SLUGO is it’s a 12 hour gaming event where we have tournaments with cash prizes. SLUGO relies on people bringing their own consoles and PCs for games, but if you don’t have anything to bring that doesn’t mean you can’t come! There is a $5 entry fee (this ensures you can collect all that sweet sweet prize money) and pizza and drinks for purchase. The event is open to everyone not just CS/IT. </p>
+  <p>SLUGO is a 12 hour gaming event where we have tournaments with cash prizes. SLUGO relies on people bringing their own consoles and PCs for games, but if you don’t have anything to bring that doesn’t mean you can’t come! There is a $5 entry fee (this ensures you can collect all that sweet sweet prize money) and pizza and drinks for purchase. The event is open to anyone and everyone with an interest in gaming. </p>
 
   <!-- ICPC -->
   <h1 class="w3-xxxlarge w3-text-yellow"><b>ICPC </b></h1>
-  <p>"The International Collegiate Programming Contest is an algorithmic programming contest for college students. Teams of three, representing their university, work to solve the most real-world problems, fostering collaboration, creativity, innovation, and the ability to perform under pressure. Through training and competition, teams challenge each other to raise the bar on the possible. Quite simply, it is the oldest, largest, and most prestigious programming contest in the world."<br> -The ICPC Website </p>
+  <p>Every fall semester the Southeastern Computer Science Department forms teams to represent our university in ICPC. In recent years, this event has been hosted locally either at LSU in Baton Rouge or here at Southeastern. To put it best:
+    <br><br>"The International Collegiate Programming Contest is an algorithmic programming contest for college students. Teams of three, representing their university, work to solve the most real-world problems, fostering collaboration, creativity, innovation, and the ability to perform under pressure. Through training and competition, teams challenge each other to raise the bar on the possible. Quite simply, it is the oldest, largest, and most prestigious programming contest in the world."
+    <br> -The ICPC Website </p>
 
   <!-- Crawfish Boil -->
   <h1 class="w3-xxxlarge w3-text-yellow"><b>Crawfish Boil </b></h1>
-  <p>blurb</p>
+  <p>At the end of each spring semester, the ACM hosts an all-you-can-eat Crawfish Boil & Barbecue for students, faculty and alumni of computer science. This is a great opportunity to hang out with classmates and catch up with fellow grads! Everyone is welcome, so bring your friends & family!</p>
+
 
 <!-- End page content -->
 </div>

@@ -33,7 +33,7 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit(form: NgForm){
-        var data = JSON.stringify(this.selectedUser);
+        var data = JSON.stringify(this.userService.selectedUser);
         console.log(data);
         this.httpClient.post("http://localhost:3000/signup", data, this.httpOptions).subscribe(d => {
         //this.httpClient.post("http://slu-acm.herokuapp.com/signup", data, this.httpOptions).subscribe(d => {
