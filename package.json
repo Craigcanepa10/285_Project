@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/clintonjwalker/cmps285-fall2019-section02-group1#readme",
   "dependencies": {
-    "angular": "^1.7.9",
+    "angular": "^1.8.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
